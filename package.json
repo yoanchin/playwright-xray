@@ -17,7 +17,8 @@
     "release:minor": "npm run release -- minor",
     "release:major": "npm run release -- major",
     "format": "prettier --write \"(src|tests)/*.(ts)\"",
-    "test": "node --test --import tsx ./src/**/*.test.ts"
+    "test": "node --test --import tsx ./src/**/*.test.ts",
+    "run" : "npx playwright test one-simple.test.ts"
   },
   "repository": {
     "type": "git",

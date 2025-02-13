@@ -20,6 +20,7 @@ const config: PlaywrightTestConfig = {
         },
         projectKey: "MYT",
         testPlan: "MYT-1",
+        testExecution: 'MYT-4',
       },
     ],
   ],
