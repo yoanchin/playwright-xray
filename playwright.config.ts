@@ -19,7 +19,6 @@ const config: PlaywrightTestConfig = {
           token: "",
         },
         projectKey: "MYT",
-        testPlan: "MYT-1",
         testExecution: 'MYT-4',
       },
     ],
