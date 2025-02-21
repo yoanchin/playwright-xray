@@ -183,6 +183,10 @@ class XrayReporter implements Reporter {
       // Set the first browser as the tested browser
       if (index === 0) {
         this.execInfo.testedBrowser = p;
+        if (this.projectsToExclude?.includes(p))
+          console.log(
+            `${bold(yellow('⏺  '))}${bold(magenta(`Setting for projectsToExclude conflicts with CLI argument. Will go with CLI: ${p}`))}`,
+          );
       }
     });
   }
@@ -191,14 +195,8 @@ class XrayReporter implements Reporter {
   private removeExcludedProjects(config: FullConfig<{}, {}>, regExp: string, projectsToReport: string[]) {
     const excludedProjects = new RegExp(`^(${regExp})$`);
     const pr = config.projects.filter((p) => {
-      !excludedProjects.test(p.name);
-      if (p.name === projectsToReport[0]) {
-        console.log(
-          `${bold(yellow('⏺  '))}${bold(
-            magenta(`Setting for projectsToExclude conflicts with CLI argument. Will go with CLI: ${p.name}`),
-          )}`,
-        );
-      }
+      if (!excludedProjects.test(p.name)) return p;
+      return;
     });
     for (const proj of pr) {
       projectsToReport.push(proj.name);

@@ -17,6 +17,8 @@ const config: PlaywrightTestConfig = {
         },
         server: {
           token: "",
+          username: "",
+          password: "",
         },
         projectKey: "MYT",
         testExecution: 'MYT-4',
